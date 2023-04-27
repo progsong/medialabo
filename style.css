@@ -1,0 +1,23 @@
+*{
+    background-color: #b8ffb8;
+
+}
+h1{
+    color:#289b50;
+    text-shadow:#acb7ab 5px 3px 7px;
+    border: 5px solid #27e820;
+    width: 500px;
+    background-color: #54ff06;
+}
+div.iroiro{
+    display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-auto-rows: 200px;
+	grid-gap: 10px;
+}
+div.jugyou{
+    display: grid;
+	grid-template-columns: 1fr 2fr 2fr;
+	grid-auto-rows: 100px 100px;
+	grid-gap: 10px;
+}
