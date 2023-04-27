@@ -15,9 +15,12 @@ div.iroiro{
 	grid-auto-rows: 200px;
 	grid-gap: 10px;
 }
-div.jugyou{
+div.zentai{
     display: grid;
-	grid-template-columns: 1fr 2fr 2fr;
-	grid-auto-rows: 100px 100px;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-auto-rows: 400px;
 	grid-gap: 10px;
+}
+div.zentai h2{
+    border: 5px dashed #27e820;
 }
