@@ -80,7 +80,18 @@ let data = {
 };
 
 /////////////////// 課題3-2 はここから書き始めよう
-console.log(data.list.g1[0].title);
-console.log(data.list.g1[1].title);
+let h1 = document.querySelector('h1#fir');
+h1.textContent = data.list.g1[0].title;
 
-console.log(data.list);
+h1 = document.querySelector('h1#sec');
+h1.textContent =data.list.g1[1].title;
+let koumoku;
+let a = document.querySelector('p#start');
+let p = document.createElement('p');
+for(let i=0;i<date.list.length;i++){
+  for(let j of data.list.g1[i]){
+    koumoku = data.list.g1[i]
+  }
+  p.textContent=koumoku;
+  a.insertAdjacentElement('beforeend',p);
+}
