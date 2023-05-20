@@ -93,10 +93,10 @@ for(let a of data.list.g1){
 	let p = document.createElement('p');
 	for(let i =0;i<data.list.g1.length;i++){
 		for(let key in data.list.g1[i]){
-      if(data.list.g1[i][key]==="area"&&data.list.g1[i][key]==="servise"){
+      if(data.list.g1[i][key]==="area"||data.list.g1[i][key]==="servise"){
         for(let key2 in data.list.g1[i][key]){
           let k2=data.list.g1[i][key][key2];
-          if(k2==="logo_s"&&k2==="logo_m"&&k2==="logo_l"){
+          if(k2==="logo_s"||k2==="logo_m"||k2==="logo_l"){
             for(let key3 in data.list.g1[i][key][key2]){
               p.textContent=data.list.g1[i][key][key2][key3];
               start.insertAdjacentElement('beforeend',p);
