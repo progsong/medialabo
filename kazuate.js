@@ -10,35 +10,36 @@ let kaisu = 4;
 // 代わりにここでは，ボタンを押したら hantei() を呼び出すイベント処理をする
 let flag = false;
 let cnt=1;
-hantei();
-// hantei();
-// hantei();
-// hantei();
+let b = document.querySelector('#kaitou');
+let yoso = Integer.parseInt(document.querySelector('input[name="yosou"]'));
+b.addEventListener('click',hantei)
+
+
 
 
 // ボタンを押した後の処理をする関数 hantei() の定義
 function hantei() {
   // 将来ここでは 4 ではなくテキストボックスに指定された数値を yoso に代入する
-    let yoso = 4;
     let span = document.querySelector('span#kaisu');
     span.textContent = cnt;  
     span = document.querySelector('span#answer');
     span.textContent = yoso; 
     console.log(cnt+"回目の予想:"+yoso);
     let i=document.querySelector('p#result');
-    
+    let p=document.createElement('p');
     if(yoso===kotae && flag===false &&cnt<=3){
-        i.textContent="正解です.おめでとう！";
+        p.textContent="正解です.おめでとう！";
         flag = true;
     }else if(yoso<kotae&&cnt<3){
-        i.textContent="まちがい.答えはもっと大きいですよ";
+        p.textContent="まちがい.答えはもっと大きいですよ";
     }else if(yoso>kotae&&cnt<3){
-        i.textContent="まちがい.答えはもっと小さいですよ";
+        p.textContent="まちがい.答えはもっと小さいですよ";
     }else if(cnt===3&&yoso!==kotae){
-        i.textContent="まちがい.残念でした答えは "+kotae+"です.";
+        p.textContent="まちがい.残念でした答えは "+kotae+"です.";
     }else if(yoso===kotae || flag===true || (cnt>3 && yoso!==kotae)){
-        i.textContent="答えは "+kotae+" でした.すでにゲームは終わっています";
+        p.textContent="答えは "+kotae+" でした.すでにゲームは終わっています";
     }
+    i.insertAdjacentElement('deforeend',p);
     cnt=cnt+1;
   // 課題3-1: 正解判定する
   // kotae と yoso が一致するかどうか調べて結果を出力
