@@ -11,7 +11,7 @@ let kaisu = 4;
 let flag = false;
 let cnt=1;
 let b = document.querySelector('#kaitou');
-let yoso = document.querySelector('input[name="yosou"]').value;
+
 
 b.addEventListener('click',hantei)
 
@@ -21,10 +21,11 @@ b.addEventListener('click',hantei)
 // ボタンを押した後の処理をする関数 hantei() の定義
 function hantei() {
   // 将来ここでは 4 ではなくテキストボックスに指定された数値を yoso に代入する
+    let yoso = Number(document.querySelector('input[name="yosou"]').value);
     let span = document.querySelector('span#kaisu');
     span.textContent = cnt; 
     span = document.querySelector('span#answer');
-    span.textContent = Number(yoso); 
+    span.textContent = yoso; 
     //console.log(cnt+"回目の予想:"+yoso);
     let i=document.querySelector('p#result');
     //let p=document.createElement('p');
