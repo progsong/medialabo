@@ -11,7 +11,8 @@ let kaisu = 4;
 let flag = false;
 let cnt=1;
 let b = document.querySelector('#kaitou');
-let yoso = Integer.parseInt(document.querySelector('input[name="yosou"]'));
+let yoso = document.querySelector('input[name="yosou"]').value;
+
 b.addEventListener('click',hantei)
 
 
@@ -21,25 +22,25 @@ b.addEventListener('click',hantei)
 function hantei() {
   // 将来ここでは 4 ではなくテキストボックスに指定された数値を yoso に代入する
     let span = document.querySelector('span#kaisu');
-    span.textContent = cnt;  
+    span.textContent = cnt; 
     span = document.querySelector('span#answer');
-    span.textContent = yoso; 
-    console.log(cnt+"回目の予想:"+yoso);
+    span.textContent = Number(yoso); 
+    //console.log(cnt+"回目の予想:"+yoso);
     let i=document.querySelector('p#result');
-    let p=document.createElement('p');
+    //let p=document.createElement('p');
     if(yoso===kotae && flag===false &&cnt<=3){
-        p.textContent="正解です.おめでとう！";
+        i.textContent="正解です.おめでとう！";
         flag = true;
     }else if(yoso<kotae&&cnt<3){
-        p.textContent="まちがい.答えはもっと大きいですよ";
+        i.textContent="まちがい.答えはもっと大きいですよ";
     }else if(yoso>kotae&&cnt<3){
-        p.textContent="まちがい.答えはもっと小さいですよ";
+        i.textContent="まちがい.答えはもっと小さいですよ";
     }else if(cnt===3&&yoso!==kotae){
-        p.textContent="まちがい.残念でした答えは "+kotae+"です.";
+        i.textContent="まちがい.残念でした答えは "+kotae+"です.";
     }else if(yoso===kotae || flag===true || (cnt>3 && yoso!==kotae)){
-        p.textContent="答えは "+kotae+" でした.すでにゲームは終わっています";
+        i.textContent="答えは "+kotae+" でした.すでにゲームは終わっています";
     }
-    i.insertAdjacentElement('deforeend',p);
+    //i.insertAdjacentElement('deforeend',p);
     cnt=cnt+1;
   // 課題3-1: 正解判定する
   // kotae と yoso が一致するかどうか調べて結果を出力
