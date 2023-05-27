@@ -7,7 +7,53 @@
         <script src="tv-program.js" defer></script>
     </head>
     <body>
-        
+        <label for="name">番組名:</label>
+        <select name="bangumi" id="bangumi">
+            <option value="">番組一覧</option>
+            <option value="uta">みんなの歌orミネラルフォーマーズ</option>
+            <option value="para">アニパラ</option>
+        </select>
+        <button id="btn">検索</button>
+        <p>
+            <label for="cha">チャンネル</label>
+            <input type="radio" name="service" id="g1" value="g1">
+            <label for="g1">NHK総合1</label>
+            <input type="radio" name="service" id="e1" value="e1">
+            <label for="g1">Eテレ1</label>
+        </p>
+        <label for="gen">ジャンル</label>
+        <p>    
+            <input type="checkbox" name="genre" id="news" value="0000">
+            <label for="news">ニュース・報道　</label>
+            <input type="checkbox" name="genre" id="sport" value="0100">
+            <label for="sport">スポーツ　</label>
+            <input type="checkbox" name="genre" id="info" value="0205">
+            <label for="info">情報・ワイドショー　</label>
+            <input type="checkbox" name="genre" id="drama" value="0300">
+            <label for="drama">ドラマ　</label>
+            <input type="checkbox" name="genre" id="music" value="0409">
+            <label for="music">音楽　</label>
+        </p>
+        <p>
+            <input type="checkbox" name="genre" id="val" value="0502">
+            <label for="val">バラエティ　</label>
+            <input type="checkbox" name="genre" id="movie" value="0600">
+            <label for="movie">映画　</label>
+            <input type="checkbox" name="genre" id="anime" value="0700">
+            <label for="anime">アニメ　</label>
+            <input type="checkbox" name="genre" id="doc" value="0800">
+            <label for="doc">ドキュメンタリー・教養　</label>
+        </p>
+        <p>
+            <input type="checkbox" name="genre" id="theater" value="0903">
+            <label for="theater">劇場・公演　</label>
+            <input type="checkbox" name="genre" id="hobby" value="1000">
+            <label for="hobby">趣味・教育　</label>
+            <input type="checkbox" name="genre" id="welfare" value="1100">
+            <label for="welfare">福祉　</label>
+        </p>
+       
+
             <h1 id = 'fir'>パラスポーツ×アニメ「アニ×パラ」▽パラアルペンスキーテーマ曲江口寿史×ＡＣＣ</h1>
             <ul>
                 <li>番組開始時刻：7:00</li>
