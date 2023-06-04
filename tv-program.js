@@ -80,21 +80,122 @@ let data = {
 };
 
 /////////////////// 課題3-2 はここから書き始めよう
-let h1 = document.querySelector('h1#fir');
-h1.textContent = data.list.g1[0].title;
 
-h1 = document.querySelector('h1#sec');
-h1.textContent =data.list.g1[1].title;
-let koumoku;
+let b = document.querySelector('#btn');
+b.addEventListener('click', sendRequest);
 
-
-let start = document.querySelector('p#start');
-for(let a of data.list.g1){
-	let p = document.createElement('p');
-  for(let key in a){
-    if(a[key]!==a.area || a[key]!== a.servize || a[key]!==a.title) {
-      p.textContent=a[key];
-      start.insertAdjacentElement('beforeend',p);
-   	}  
+function sendRequest() {
+	let w = document.querySelectorAll('li'); 
+  for(let i of w){
+    i.remove();
   } 
+  w = document.querySelectorAll('h1'); 
+  for(let i of w){
+    i.remove();
+  } 
+  let s;
+  let g;
+  let url
+  for(let i of data.list.g1){
+    s =i.service.id;//g1かe1を取得
+    for(let j of i.genres){
+      g=j;//0000とか取り出す
+    }
+    url ='https://www.nishita-lab.org/web-contents/jsons/nhk/'+s+'-'+g+'-j.json';
+    console.log(url);
+  }
+  
+
+	// 通信開始
+	axios.get(url)
+		.then(showResult)//通信成功
+		.catch(showError)//通信失敗
+		.then(finish);//通信の最後の処理(成功しても失敗しても)
+}
+
+function showResult(resp) {
+	// サーバから送られてきたデータを出力
+	let data = resp.data;
+
+	// data が文字列型なら，オブジェクトに変換する
+	if (typeof data === 'string') {
+		data = JSON.parse(data);
+	}
+  console.log(data);
+
+  //ここからがんばって検索結果を表示
+  let rs = document.querySelectorAll('input[name="service"]');
+  let serkey;
+  for(let i of data.list.g1){
+    for (let r of rs) {
+      if (r.checked) {
+        serkey=r.value;
+      }  
+    }
+    if(serkey===i.service.id){
+      let cs = document.querySelectorAll('input[name="genre"]');
+      let cnt=0;
+      for(let c of cs){
+        if(c.checked){
+          for(let m of i.genres){
+            if(c.value===m){
+              cnt++;
+              console.log("title:"+i.title);
+              console.log("入力:"+c.value);
+              console.log("ジャンル:"+i.genres)
+            } 
+          }
+          //cnt = 0;
+        }
+        
+      }console.log(cnt);
+      if(cnt>0){
+        let str=i.start_time;
+        let end=i.end_time;
+        let sena=i.service.name;
+        let ti=i.title;
+        let subti=i.subtitle;
+        let con=i.content;
+        let act=i.act;
+        
+        let ul = document.createElement('ul');
+        let pti = document.querySelector('p#tit');
+        let h1 = document.createElement('h1');
+        
+        let li = document.createElement('li');
+        
+        h1.textContent=ti;
+        pti.insertAdjacentElement('beforeend',h1);
+        pti.insertAdjacentElement('beforeend',ul);
+        li.textContent="開始時刻:"+str;
+        ul.insertAdjacentElement('beforeend',li);
+        li=document.createElement('li');
+        li.textContent='終了時刻:'+end;
+        ul.insertAdjacentElement('beforeend',li);
+        li=document.createElement('li');
+        li.textContent='チャンネル:'+sena;
+        ul.insertAdjacentElement('beforeend',li);
+        li=document.createElement('li');
+        li.textContent='番組名:'+ti;
+        ul.insertAdjacentElement('beforeend',li);
+        li=document.createElement('li');
+        li.textContent='番組サブタイトル:'+subti;
+        ul.insertAdjacentElement('beforeend',li);
+        li=document.createElement('li');
+        li.textContent='番組説明:'+con;
+        ul.insertAdjacentElement('beforeend',li);
+        li=document.createElement('li');
+        li.extContent='出演者:'+act;
+        ul.insertAdjacentElement('beforeend',li);
+      }
+    }
+  }
+}
+  
+  
+function showError(err) {
+	console.log(err);
+}
+function finish() {
+	console.log('Ajax 通信が終わりました');
 }
