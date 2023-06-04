@@ -137,11 +137,12 @@ function showResult(resp) {
       let cnt=0;
       for(let c of cs){
         if(c.checked){
+          console.log("入力:"+c.value);
           for(let m of i.genres){
             if(c.value===m){
               cnt++;
               console.log("title:"+i.title);
-              console.log("入力:"+c.value);
+              
               console.log("ジャンル:"+i.genres)
             } 
           }
